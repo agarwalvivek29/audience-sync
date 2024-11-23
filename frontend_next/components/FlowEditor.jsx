@@ -8,8 +8,6 @@ import ReactFlow, {
   Background,
   useNodesState,
   useEdgesState,
-  Node,
-  Edge,
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 import { Button } from "@/components/ui/button"
@@ -19,7 +17,6 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -39,7 +36,7 @@ const getNodeIcon = (type) => {
 };
 
 const initialNodes = [
-  { id: '1', type: 'customNode', position: { x: 0, y: 0 }, data: { label: 'Trigger', type: 'Trigger', icon: getNodeIcon('Trigger'), details: { condition: 'New user registered' } } },
+  { id: '1', type: 'customNode', position: { x: 0, y: 0 }, data: { label: 'Trigger', type: 'Trigger', iconType: 'Trigger', details: { condition: 'New user registered' } } },
 ];
 
 export default function FlowEditor() {
@@ -56,7 +53,7 @@ export default function FlowEditor() {
     const newNode = {
       id: (nodes.length + 1).toString(),
       type: 'customNode',
-      data: { label: type, type: type, icon: getNodeIcon(type), details: {} },
+      data: { label: type, type: type, iconType: type, details: {} },
       position: { x: Math.random() * 500, y: Math.random() * 500 },
     };
     setNodes((nds) => nds.concat(newNode));
@@ -71,7 +68,14 @@ export default function FlowEditor() {
     try {
       const flowData = JSON.parse(jsonRepresentation);
       if (flowData.nodes && flowData.edges) {
-        setNodes(flowData.nodes);
+        const updatedNodes = flowData.nodes.map(node => ({
+          ...node,
+          data: {
+            ...node.data,
+            icon: getNodeIcon(node.data.iconType)
+          }
+        }));
+        setNodes(updatedNodes);
         setEdges(flowData.edges);
       }
     } catch (error) {
@@ -87,7 +91,13 @@ export default function FlowEditor() {
     setNodes((nds) =>
       nds.map((node) => {
         if (node.id === id) {
-          return { ...node, data: { ...node.data, ...newData, details: { ...node.data.details, ...newData.details } } };
+          const updatedData = { 
+            ...node.data, 
+            ...newData, 
+            details: { ...node.data.details, ...newData.details },
+            icon: getNodeIcon(newData.type || node.data.type)
+          };
+          return { ...node, data: updatedData };
         }
         return node;
       })
@@ -214,4 +224,3 @@ export default function FlowEditor() {
     </div>
   );
 }
-
