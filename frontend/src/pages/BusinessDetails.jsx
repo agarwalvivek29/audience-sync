@@ -9,7 +9,7 @@ function BusinessDetails() {
   const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert("Details Processed Successfully!");
+    
     console.log({ businessName, category, industry, location });
 
     // Redirect to the target page

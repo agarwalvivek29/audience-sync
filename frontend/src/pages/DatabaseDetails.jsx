@@ -11,7 +11,7 @@ function DatabaseDetails() {
   const navigate = useNavigate();
   const handleTestConnection = (e) => {
     e.preventDefault();
-    alert("Connection Tested Successfully!");
+   
     console.log({ host, port, username, password, dbName });
     navigate("/onboarding/ChannelIntegration");
   };

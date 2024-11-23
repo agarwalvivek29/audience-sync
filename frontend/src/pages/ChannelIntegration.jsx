@@ -12,7 +12,7 @@ function ChannelIntegration() {
   const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(`${selectedOption === "aws" ? "AWS SES" : "Push Notification"} details processed successfully!`);
+  
     console.log({ accessKey, secretKey, region, email, webhookUrl, authKey });
     navigate("/onboarding/UserEventIntegration");
   };
