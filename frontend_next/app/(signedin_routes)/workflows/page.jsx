@@ -1,5 +1,7 @@
 import FlowEditor from "@/components/FlowEditor";
 
-export default function Page(){
+function Page(){
     return <FlowEditor />
 }
+
+export default Page;

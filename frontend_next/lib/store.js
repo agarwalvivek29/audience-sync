@@ -2,6 +2,8 @@ import { configureStore, createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   step: 1,
+  schema: {},
+  userId: null,
   businessInfo: {
     companyName: '',
     brand: '',
@@ -55,9 +57,16 @@ const onboardingSlice = createSlice({
     setDataSelection: (state, action) => {
       state.dataSelection = { ...state.dataSelection, ...action.payload }
     },
+    setUserId: (state, action) => {
+      state.userId = action.payload
+    },
+    setSchema: (state, action) => {
+      state.schema = action.payload
+    }
   },
 })
 
+export const onboardingActions = onboardingSlice.actions;
 export const { setStep, setBusinessInfo, setDatabaseIntegration, setChannelIntegrations, setDataSelection } = onboardingSlice.actions
 
 export const store = configureStore({

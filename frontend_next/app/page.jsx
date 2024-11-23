@@ -1,11 +1,12 @@
 "use client";
 import Link from 'next/link'
-import { auth, useAuth, useClerk } from '@clerk/nextjs'
+import { auth, useAuth, useClerk, useUser } from '@clerk/nextjs'
 import { SignInButton } from '@clerk/nextjs'
 import UserProfileShow from '@/components/UserProfile'
 
 export default function Home() {
   const { userId, isSignedIn, signOut } = useAuth();
+  const data = useUser();
 
   return (
     (<main className="flex min-h-screen flex-col items-center justify-center p-24">
