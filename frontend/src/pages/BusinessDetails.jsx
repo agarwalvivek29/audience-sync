@@ -1,16 +1,19 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar";
-
+import { useNavigate } from "react-router-dom";
 function BusinessDetails() {
   const [businessName, setBusinessName] = useState("");
   const [category, setCategory] = useState("");
   const [industry, setIndustry] = useState("");
   const [location, setLocation] = useState("");
-
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert("Details Processed Successfully!");
+    
     console.log({ businessName, category, industry, location });
+
+    // Redirect to the target page
+    navigate("/onboarding/DatabaseDetails");
   };
 
   return (
