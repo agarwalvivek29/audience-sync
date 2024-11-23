@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar";
+import { useNavigate } from "react-router-dom";
 
 function DatabaseDetails() {
   const [host, setHost] = useState("");
@@ -7,11 +8,12 @@ function DatabaseDetails() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [dbName, setDbName] = useState("");
-
+  const navigate = useNavigate();
   const handleTestConnection = (e) => {
     e.preventDefault();
     alert("Connection Tested Successfully!");
     console.log({ host, port, username, password, dbName });
+    navigate("/onboarding/ChannelIntegration");
   };
 
   return (

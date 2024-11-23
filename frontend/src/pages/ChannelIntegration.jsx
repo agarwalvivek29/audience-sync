@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar";
-
+import { useNavigate } from "react-router-dom";
 function ChannelIntegration() {
   const [selectedOption, setSelectedOption] = useState("aws"); // Default option is AWS SES
   const [accessKey, setAccessKey] = useState("");
@@ -9,11 +9,12 @@ function ChannelIntegration() {
   const [email, setEmail] = useState("");
   const [webhookUrl, setWebhookUrl] = useState("");
   const [authKey, setAuthKey] = useState("");
-
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
     alert(`${selectedOption === "aws" ? "AWS SES" : "Push Notification"} details processed successfully!`);
     console.log({ accessKey, secretKey, region, email, webhookUrl, authKey });
+    navigate("/onboarding/UserEventIntegration");
   };
 
   return (
