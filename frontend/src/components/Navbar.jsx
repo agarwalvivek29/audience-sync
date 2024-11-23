@@ -5,7 +5,7 @@ import { Link, NavLink } from 'react-router-dom' //link here is equivalent to th
 export default function Navbar() {
     return (
         <header className="shadow sticky z-50 top-0">
-            <nav className="bg-zinc-800 border-gray-200 px-4 lg:px-6 py-2.5">
+            <nav className="bg-white border-gray-200 px-4 lg:px-6 py-2.5">
                 <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
                     <Link to="/" className="flex items-center">
                         <img
@@ -42,34 +42,43 @@ export default function Navbar() {
                                         `block py-2 pr-4 pl-3 duration-200 ${ isActive ? "text-orange-700" : "text-gray-700"} border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
                                     }
                                 > 
-                                    Learn
+                                    Home
                                 </NavLink>
                             </li>
                             <li> 
-                                <NavLink to="/about"
+                                <NavLink to="/onboarding/BusinessDetails"
                                     className={({isActive}) => //note that here class is written in backtisk '' and not in "" because we will change the classes in future according to our activity so to make it dynamic it is written in that way
                                         `block py-2 pr-4 pl-3 duration-200 ${ isActive ? "text-orange-700" : "text-gray-700"} border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
                                     }
                                 > 
-                                    About
+                                    Business Details
                                 </NavLink>
                             </li>
                             <li> 
-                                <NavLink to="/contact"
+                                <NavLink to="/onboarding/DatabaseDetails"
                                     className={({isActive}) => //note that here class is written in backtisk '' and not in "" because we will change the classes in future according to our activity so to make it dynamic it is written in that way
                                         `block py-2 pr-4 pl-3 duration-200 ${ isActive ? "text-orange-700" : "text-gray-700"} border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
                                     }
                                 > 
-                                    Contact
+                                    Database Integration
                                 </NavLink>
                             </li>
                             <li> 
-                                <NavLink to="/github"
+                                <NavLink to="/onboarding/ChannelIntegration"
                                     className={({isActive}) => //note that here class is written in backtisk '' and not in "" because we will change the classes in future according to our activity so to make it dynamic it is written in that way
                                         `block py-2 pr-4 pl-3 duration-200 ${ isActive ? "text-orange-700" : "text-gray-700"} border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
                                     }
                                 > 
-                                    Github
+                                    Channel Integration
+                                </NavLink>
+                            </li>
+                            <li> 
+                                <NavLink to="/onboarding/UserEventIntegration"
+                                    className={({isActive}) => //note that here class is written in backtisk '' and not in "" because we will change the classes in future according to our activity so to make it dynamic it is written in that way
+                                        `block py-2 pr-4 pl-3 duration-200 ${ isActive ? "text-orange-700" : "text-gray-700"} border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
+                                    }
+                                > 
+                                    Database Selection
                                 </NavLink>
                             </li>
                         </ul>
