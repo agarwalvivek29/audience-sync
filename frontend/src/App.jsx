@@ -6,7 +6,7 @@ import './App.css'
 import SignIn from './pages/auth/SignIn'
 import Navbar from './components/Navbar'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-
+import TablePage from "./pages/TablePage"
 function App() {
   const [count, setCount] = useState(0)
 
@@ -15,6 +15,7 @@ function App() {
     <BrowserRouter>
       <Routes>
        <Route path="/" element={<Navbar />} /> 
+       <Route path="/TablePage" element={<TablePage />} /> 
       </Routes>
     </BrowserRouter>
     </>
