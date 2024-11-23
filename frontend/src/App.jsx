@@ -13,7 +13,6 @@ import ChannelIntegration from './pages/ChannelIntegration'
 import UserEventIntegration from './pages/UserEventIntegration'
 
 import TablePage from "./pages/TablePage"
-import Home from './pages/home'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -23,6 +22,7 @@ function App() {
     <BrowserRouter>
       <Routes>
        <Route path="/" element={<Home />} /> 
+       <Route path="/dashboard" element={<TablePage />} /> 
        <Route path="/onboarding/BusinessDetails" element={<BusinessDetails />} />
        <Route path="/onboarding/DatabaseDetails" element={< DatabaseDetails/>} />  
         <Route path="/onboarding/ChannelIntegration" element={<ChannelIntegration />} />
