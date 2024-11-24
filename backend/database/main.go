@@ -9,6 +9,7 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 	_ "github.com/lib/pq"
 	"go.mongodb.org/mongo-driver/bson"
@@ -46,9 +47,14 @@ func main() {
 	r.HandleFunc("/get/{collection}/{field}/{value}", getHandler).Methods("GET")
 	r.HandleFunc("/query/{userid}", queryHandler).Methods("POST")
 
+	corsHandler := handlers.CORS(
+		handlers.AllowedOrigins([]string{"*"}),           // Allow all origins
+		handlers.AllowedMethods([]string{"GET", "POST"}), // Allow specific methods
+		handlers.AllowedHeaders([]string{"Content-Type", "Authorization"}),
+	)
 	// Start the HTTP server
 	log.Println("Server running on :8080")
-	log.Fatal(http.ListenAndServe(":8080", r))
+	log.Fatal(http.ListenAndServe(":8080", corsHandler(r)))
 }
 
 // UserCredentials represents a user's PostgreSQL database credentials

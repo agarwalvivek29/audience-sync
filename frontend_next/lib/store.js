@@ -1,9 +1,12 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit';
+import { campaigns } from './mock-data';
 
 const initialState = {
   step: 1,
-  schema: {},
+  schema: null,
   userId: null,
+  user: {},
+  campaigns: [],
   businessInfo: {
     companyName: '',
     brand: '',
@@ -62,6 +65,12 @@ const onboardingSlice = createSlice({
     },
     setSchema: (state, action) => {
       state.schema = action.payload
+    },
+    setUser: (state, action) => {
+      state.user = action.payload
+    },
+    setCampaigns: (state, action) => {
+      state.campaigns = action.payload
     }
   },
 })
@@ -74,4 +83,3 @@ export const store = configureStore({
     onboarding: onboardingSlice.reducer,
   },
 })
-

@@ -96,7 +96,7 @@ export default function VisualQueryEditor() {
   const [queryResult, setQueryResult] = useState('');
 
   const getAvailableJoinFields = (tableName) => {
-    const table = Schema.tables.find(t => t.name === tableName);
+    const table = Schema?.tables.find(t => t.name === tableName);
     return table ? table.fields : [];
   };
 
@@ -147,11 +147,11 @@ export default function VisualQueryEditor() {
         <CardTitle>Visual Query Editor</CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="space-y-4">
+        {<div className="space-y-4">
           <div className="bg-muted p-4 rounded-lg">
             <Label className="text-lg font-semibold mb-4 block">Available Tables</Label>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {Schema.tables.map((table) => (
+              {Schema?.tables.map((table) => (
                 <div
                   key={table.name}
                   className="flex items-start space-x-3 p-3 bg-background rounded-md border"
@@ -205,7 +205,7 @@ export default function VisualQueryEditor() {
                       <SelectValue placeholder="Select field" />
                     </SelectTrigger>
                     <SelectContent>
-                      {Schema.tables.find(t => t.name === tableName)?.fields.map((field) => (
+                      {Schema?.tables.find(t => t.name === tableName)?.fields.map((field) => (
                         <SelectItem key={field.name} value={field.name}>
                           {field.name}
                         </SelectItem>
@@ -361,7 +361,7 @@ export default function VisualQueryEditor() {
               </Button>
             </Card>
           )}
-        </div>
+        </div>}
       </CardContent>
       <CardFooter className="flex justify-between">
         <Button onClick={executeQuery}>Generate SQL Query</Button>
@@ -374,5 +374,5 @@ export default function VisualQueryEditor() {
         </CardContent>
       )}
     </Card>
-  );
+  );  
 } 

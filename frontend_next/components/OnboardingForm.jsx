@@ -7,10 +7,12 @@ import DatabaseIntegrationStep from '@/components/DatabaseIntegrationStep'
 import ChannelIntegrationsStep from '@/components/ChannelIntegrationsStep'
 import DataSelectionStep from '@/components/DataSelectionStep'
 import CompletionStep from '@/components/CompletionStep'
+import { useRouter } from 'next/navigation';
 
 export default function OnboardingForm() {
   const step = useSelector((state) => state.onboarding.step)
   const dispatch = useDispatch()
+  const router = useRouter();
 
   const renderStep = () => {
     switch (step) {
@@ -41,7 +43,9 @@ export default function OnboardingForm() {
               className={`w-10 h-10 rounded-full ${
                 s === step ? 'bg-blue-500 text-white' : 'bg-gray-200'
               } flex items-center justify-center`}
-              onClick={() => dispatch(setStep(s))}>
+              onClick={() => {
+                dispatch(setStep(s));
+              }}>
               {s}
             </button>
           ))}
